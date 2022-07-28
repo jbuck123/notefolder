@@ -23,7 +23,7 @@ notes_router.get('/notes', (request, response) => {
         console.log('recieved the notes mate')
 })
 
-// UPDATE 
+// create?
 
 notes_router.post('/notes', (request, response) => {
     getNoteDB()
@@ -46,6 +46,28 @@ notes_router.post('/notes', (request, response) => {
 
         })
 })
+//Update or Delete?
+// deleter 
+notes_router.delete('/notes', (request, response) => {
+    getNoteDB()
+        .then(notes => {
+            const id = request.body.id;
+            // find itterates like for each but breaks when it finds the matching index
+            const obj = notes.find(notes.id === id);
+            // indexOF method is used to return to the first occurrence of a specified value in a string
+            const index = notes.indexOf(obj);
+            //splice method changes the contents of an arary by removing or replacing existing elements and or adding new elemnts in place
+            notes.splice(index, 1);
+
+            fs.promises.writeFile(db_path, JSON.stringify(notes, null, 2))
+                .then(() => {
+                    console.log("notes updated successfully")
+                    response.json(todos)
+                })
+                .catch(err => console.log(err));
+        })
+})
+
 
 
 
