@@ -1,0 +1,25 @@
+{
+  "dependencies": {
+    "express": "^4.18.1",
+    "uuid": "^8.3.2"
+  },
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "name": "notefolder",
+  "description": "",
+  "version": "1.0.0",
+  "main": "server.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jbuck123/notefolder.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jbuck123/notefolder/issues"
+  },
+  "homepage": "https://github.com/jbuck123/notefolder#readme"
+}
