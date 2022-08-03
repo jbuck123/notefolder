@@ -3,14 +3,14 @@ const fs = require("fs");
 const path = require('path');
 const uuid = require('uuid').v4;
 // const mysql = require('mysql2');
-const db_path = "/Users/jamesbuchmann/GitHub/notefold/notefolder/db/db.json"
+// const db_path = './db/db.json'
 
 
 // CRUD
 // write the function that reads the notes from the DB
 
 function getNoteDB(){
-    return fs.promises.readFile(db_path, 'utf8')
+    return fs.promises.readFile('./db/db.json', 'utf8')
         .then(data => JSON.parse(data))
        
 }
@@ -37,8 +37,8 @@ notes_router.post('/notes', (request, response) => {
             notes_data.push(new_note);
 
             // write the note to the DB
-            console.log(db_path)
-            fs.promises.writeFile(db_path, JSON.stringify(notes_data, null, 2))
+            // console.log(db_path)
+            fs.promises.writeFile('./db/db.json', JSON.stringify(notes_data, null, 2))
                 .then(() => {
                     console.log('added successfully')
                     response.json(notes_data)
@@ -69,7 +69,7 @@ notes_router.delete('/notes/:id', (request, response) => {
                 data = []
             }
 
-            fs.promises.writeFile(db_path, JSON.stringify(data, null, 2))
+            fs.promises.writeFile('./db/db.json', JSON.stringify(data, null, 2))
                 .then(() => {
                     console.log("notes updated successfully")
                     response.json(data)
@@ -85,8 +85,6 @@ notes_router.delete('/notes/:id', (request, response) => {
 
 
 
-
-console.log('test')
 
 
 
